@@ -4,9 +4,13 @@ This application uses a Long Short-Term Memory (LSTM) neural network to classify
 
 Features
 Sentiment Classification: Classify movie reviews as positive or negative.
+
 Interactive Interface: User-friendly interface built with Streamlit for easy interaction.
+
 Real-time Prediction: Enter text and receive immediate sentiment analysis.
+
 Requirements
+
 Before running the application, ensure you have the following Python packages installed:
 
 tensorflow
