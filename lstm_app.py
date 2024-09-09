@@ -89,7 +89,8 @@ if uploaded_file is not None:
     st.write("Building the LSTM model...")
     model = keras.Sequential([
         keras.layers.Embedding(vocab_size, embedding_dim, input_length=max_length),
-        keras.layers.Bidirectional(keras.layers.LSTM(64)),
+        keras.layers.Bidirectional(keras.layers.LSTM(128, return_sequences=True)),
+        keras.layers.GlobalMaxPooling1D(),
         keras.layers.Dense(24, activation='relu'),
         keras.layers.Dense(1, activation='sigmoid')
     ])
@@ -98,6 +99,7 @@ if uploaded_file is not None:
 
     st.write(model.summary())
 
+    num_epochs = 10
     try:
         history = model.fit(train_sentences, train_labels, epochs=num_epochs, validation_split=0.1, verbose=1)
     except Exception as e:
@@ -113,5 +115,3 @@ if uploaded_file is not None:
 
     st.write("Classification report:")
     st.text(classification_report(test_labels, pred_labels))
-
-
