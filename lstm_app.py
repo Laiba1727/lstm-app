@@ -111,4 +111,6 @@ pred_labels = (prediction >= 0.5).astype(int)
 accuracy = accuracy_score(test_labels, pred_labels)
 st.write(f"Accuracy on the test set: {accuracy:.2f}")
 
+st.write("Classification report:")
+st.text(classification_report(test_labels, pred_labels))
 
